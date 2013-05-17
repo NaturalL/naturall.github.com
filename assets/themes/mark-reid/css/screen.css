@@ -208,7 +208,7 @@ ul.compact li a {
 }
 #header h1 {
 	font-family: Palatino, georgia, "times new roman", serif;
-	margin-bottom: 0;
+	margin-bottom: 20px;
 	line-height: 0.9em;
 	display: block;
 	font-weight: normal;
@@ -452,7 +452,7 @@ p.delicious-extended:before { content: ' — '; }
 
 /* @group Footer */
 #footer {
-	margin-top: 0;
+	margin-top: 20px;
 	color: grey;
 	font-size: 87.5%;
 	line-height: 1.3em;
