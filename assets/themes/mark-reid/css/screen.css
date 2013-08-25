@@ -21,7 +21,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,t
 /* @end */
 
 body {
-	font-family: Palatino, georgia, "times new roman", serif;
+	font-family: georgia, 宋体,serif;
 	background-color: whitesmoke;
 	background-position: center -18em;
 	background-repeat: repeat-x; 
@@ -40,20 +40,31 @@ a.pdf:before {
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
 
-h1,h2,h3,h4 { 
-	line-height:1em; 
-	font-size:1.5em; 
-	font-weight: normal; 
+h1,h2,h3{ 
+	line-height: 1.25em; 
+	font-weight: bold; 
 	clear: left; 	
-	font-family: 'lucida grande', sans-serif; 
+	font-family: inherit; 
 }
-h1 { margin-bottom: 1em; }
+
+h1 { 
+	
+	margin:0 0 1em 0;
+	font-weight: normal; 
+}
+
 h2 {
-	font-size: 100%;
-	line-height: 1.2em;
-	margin:1.5em 0 1.5em 0;
-	font-weight:bold;
+	font-size: 1.25em;
+	margin: 0.9em 0 0.3em 0;
 }
+
+h3 {
+	font-size: 1em;
+	margin: 0.6em 0 0.2em 0;
+}
+
+
+
 
 
 
