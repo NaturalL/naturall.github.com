@@ -78,7 +78,7 @@ hr {
 sup { line-height: 1ex; }
 
 #site {
-	max-width: 46em;
+	max-width: 55em;
 	margin: 1.5em auto 3em auto;
 	line-height:1.5em;
 }
@@ -356,23 +356,22 @@ pre {
 	margin: 1em 0 1.5em 0;
 	font-size: 0.75em; /* Hack to make code look same size as body font */  
 	line-height: 1.5em;	
-	color: #111;
-	background: #fffff0;
+
+	color: #E6E6E6;
+	background: #202020;
 	border: 1px solid #ddc;
 	padding: 0.5em 1em;
-	overflow: hidden;
+	overflow: auto;
 
 	/* Experimental CSS3 stuff */
 	box-shadow: 1px 1px 6px #ccc;
 	-webkit-box-shadow: 1px 1px 6px #ccc;
 	-moz-box-shadow: 1px 1px 6px #ccc;
 }
-pre:hover {
-	border-right: none;
-	overflow: visible;
-}
+
 code {
-	font-size: 1em;
+	font-family: 宋体,serif;
+	font-size: 1.2em;
 	background-color: #f7f7ff;
 	line-height: 1.4em;
 }
