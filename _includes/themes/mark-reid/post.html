@@ -1,6 +1,7 @@
 <div id="page">
 	
   <h1 class="emphnext">{{ page.title }}</h1>
+  <span class="date">{{ page.date| date: "%Y-%m-%d" }}</span>
   <ul class="tag_box inline">
   {% assign tags_list = page.tags %}
   {% include JB/tags_list %}
@@ -10,7 +11,7 @@
 
   <address class="signature">
     <a class="author" href="{{ HOME_PATH }}">{{ site.author.name }}</a> 
-    <span class="date">{{ page.date | date_to_long_string }}</span>
+    <span class="date">{{ page.date| date: "%Y-%m-%d" }}</span>
     <span class="location">{{ page.location }}</span>
   </address>
   
