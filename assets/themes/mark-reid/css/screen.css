@@ -27,6 +27,13 @@ body {
 	background-repeat: repeat-x; 
 }
 
+iframe {
+	margin:1em auto;
+}
+#video{
+	text-align:center;
+}
+
 /* Hack via Joel Spolsky to make image rescaling nicer in IE */
 img { -ms-interpolation-mode:bicubic; }
 
