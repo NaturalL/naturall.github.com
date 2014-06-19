@@ -381,8 +381,6 @@ pre {
 	border:1px solid #ccc;
 	border:1px solid rgba(0, 0, 0, 0.15);
 	
-	-webkit-border-radius:2px;
-	-moz-border-radius:2px;
 	border-radius:2px;
 	white-space:pre;
 	word-break:keep-all;
@@ -390,11 +388,15 @@ pre {
 
 
 
-.linenodiv pre {
+.linenos pre {
     white-space:pre;
+    border-top-right-radius:0em;
+    border-bottom-right-radius:0em;
 }
-td pre {
+.linenos + .code pre {
     max-width:53.5em;
+    border-top-left-radius:0em;
+    border-bottom-left-radius:0em;
 }
 
 .highlight pre{
