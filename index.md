@@ -5,11 +5,10 @@ tagline: Supporting tagline
 ---
 {% include JB/setup %}
 
-呵呵，快开学了
 
 
 
-
+偏见
     
 
 

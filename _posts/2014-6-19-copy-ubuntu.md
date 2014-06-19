@@ -3,37 +3,29 @@ layout: post
 title: 迁移ubuntu到另一块硬盘
 description: ""
 category:
-tags: [sublime]
+tags: [ubuntu]
 
 ---
 {% include JB/setup %}
 
 
-## Sublime简介
-
-Sublime Text 是一套基于 Python 的跨平台文字编辑器。最初设计为 Vim 编辑器的多功能扩充软件。
-2011年1月28日，Sublime Text 第二版的 Alpha 测试版本释出。同年7月1日释出 Beta 测试版本。2012年6月26日，Sublime Text 2 正式脱离测试版本。
-
+实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。
+## 复制分区
+    #将分区 sdb3 复制到 sda9
+    dd if=/dev/sdb3 of=/dev/sda9
+这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。
 <!--break-->
-## 功能特色
+## 修改fstab
 
-Sublime为编程提供了各种便利，且具有强大的自定义功能，可以在各个文件之间非常方便地切换。
-此外插件安装非常方便好用，本来没有目录树，装个SideBarEnhancements 插件就好了，输入中文时搜狗输入法框一直在最下面，装个IMESupport就完美了。
-
-
-## 主题定制
-
-Sublime可以定义主题，这是我的User配置文件，简单配置了主题、字体。
-
-    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-    "font_face": "宋体",
-    "font_size": 12.0,
+复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。
 
 
+## 更新新硬盘上系统的grub
+dd复制后的/boot/grub中仍然是旧的引导信息，我需要更新。
+
+<http://askubuntu.com/questions/145241/how-do-i-run-update-grub-from-a-livecd>
+<http://ubuntuforums.org/showthread.php?t=1581099/>
 
 
-##效果
-
-个人觉得还是宋体清楚、干净。
-
-![Sublime]({{ site.url }}/assets/images/sublime1.png)
+##总结
+以上几步需要根据实际需求来。
