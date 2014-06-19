@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 
+title:  FlyJoy
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
