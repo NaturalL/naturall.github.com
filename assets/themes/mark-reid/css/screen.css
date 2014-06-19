@@ -160,6 +160,10 @@ blockquote {
 	border-bottom: 1px solid silver;
 }
 /* @group Table */
+.highlighttable tbody {
+	vertical-align:top;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0px;
@@ -364,6 +368,7 @@ p.excerpt { margin: 0; }
 /* @end */
 
 /* @group Code */
+
 pre {
 	font-size: 0.8em; /* Hack to make code look same size as body font */  
 	line-height: 1.3em;	
@@ -375,6 +380,7 @@ pre {
 	background-color:#f5f5f5;
 	border:1px solid #ccc;
 	border:1px solid rgba(0, 0, 0, 0.15);
+	
 /*	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;*/
@@ -382,6 +388,13 @@ pre {
 	white-space:pre-wrap;
 	word-break:break-all;
 	word-wrap:break-word;
+}
+
+
+
+.linenodiv pre {
+	word-wrap:normal;
+	word-break:keep-all;
 }
 
 .highlight pre{

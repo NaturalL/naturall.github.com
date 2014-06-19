@@ -58,7 +58,7 @@ syntax.css：
 .cm { color: #999999; font-style: italic } /* Comment.Multiline */
 .cp { color: #cd2828; font-weight: bold } /* Comment.Preproc */
 .c1 { color: #999999; font-style: italic } /* Comment.Single */
-.cs { color: #e50808; font-weight: bold; background-color: #520000 } /* Comment.Special */
+.cs { color: #e50808; font-weight: bold; background-color: #520000 } /*       Comment.Special Comment.Special */
 .gd { color: #d22323 } /* Generic.Deleted */
 .ge { color: #d0d0d0; font-style: italic } /* Generic.Emph */
 .gr { color: #d22323 } /* Generic.Error */
