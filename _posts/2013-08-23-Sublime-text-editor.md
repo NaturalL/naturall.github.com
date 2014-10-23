@@ -14,7 +14,6 @@ tags: [sublime]
 Sublime Text 是一套基于 Python 的跨平台文字编辑器。最初设计为 Vim 编辑器的多功能扩充软件。
 2011年1月28日，Sublime Text 第二版的 Alpha 测试版本释出。同年7月1日释出 Beta 测试版本。2012年6月26日，Sublime Text 2 正式脱离测试版本。
 
-<!--break-->
 ## 功能特色
 
 Sublime为编程提供了各种便利，且具有强大的自定义功能，可以在各个文件之间非常方便地切换。
