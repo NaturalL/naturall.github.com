@@ -45,7 +45,7 @@ p {
 }
 
 .post p {
-	text-indent: 20px;
+	text-indent: 2em;
 }
 a { text-decoration: none; color: rgba(0, 95, 189, 1); }
 a:hover { text-decoration: underline; color: rgba(0, 95, 189, 1); }
@@ -67,16 +67,15 @@ h1 {
 }
 
 h2 {
-	font-size: 1.1em;
+	font-size: 1em;
 	margin: 0.9em 0 0.3em 0;
 }
 
 h3 {
 	font-size: 1em;
 	margin: 0.6em 0 0.2em 0;
+	text-indent: 1em;
 }
-
-
 
 
 
