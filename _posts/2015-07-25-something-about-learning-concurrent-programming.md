@@ -3,7 +3,7 @@ layout: post
 title: 一些并发编程的学习
 description: ""
 category: 
-tags: [java concurrent]
+tags: [java,concurrent]
 
 ---
 {% include JB/setup %}
@@ -19,11 +19,12 @@ tags: [java concurrent]
 这本书还是蛮不错的，起码给了我一个基本认识，还接触了一点函数式编程语言Clojure，认识了一点go、erlang的特性。
 
 具体内容就不说了，感兴趣可以看看。这里列一下章节目录：
-1.  Introduction
+
+1. Introduction
 2. Threads and Locks
-3.  Functional Programming
-4.  The Clojure Way—Separating Identity from State
-5.  Actors
+3. Functional Programming
+4. The Clojure Way—Separating Identity from State
+5. Actors
 6. Communicating Sequential Processes
 7. Data Parallelism
 8. The Lambda Architecture
