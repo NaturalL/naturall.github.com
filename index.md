@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  Bias
+title:  
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
