@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  Bias
+title:  FlyJoy
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
