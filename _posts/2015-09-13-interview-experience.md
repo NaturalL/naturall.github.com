@@ -3,7 +3,7 @@ layout: post
 title: 几次失败面试
 description: ""
 category: 
-tags: [java,concurrent]
+tags: [java,interview]
 
 ---
 {% include JB/setup %}
