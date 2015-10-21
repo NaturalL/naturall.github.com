@@ -8,6 +8,8 @@ tags: [java,interview]
 ---
 {% include JB/setup %}
 
+
+
 近来面了几个公司，都失败了。
 
 #### 阿里：实习面了两次，校招内推一次。
