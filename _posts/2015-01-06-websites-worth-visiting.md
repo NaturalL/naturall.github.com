@@ -10,4 +10,6 @@ tags: [site]
 
 
 [Hacker News](https://news.ycombinator.com/)
-[Java Language and Virtual Machine Specifications]（http://docs.oracle.com/javase/specs/）
+
+
+[Java Language and Virtual Machine Specifications](http://docs.oracle.com/javase/specs/)
