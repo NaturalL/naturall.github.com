@@ -271,7 +271,7 @@ ul.compact li a {
 	display: inline;
 }
 #header ul li a:hover {
-	background: #999;
+	background: #222;
 	border-radius: 3px;
 	color: #fff;
 }
@@ -734,6 +734,9 @@ p > img {
 		border-left: none;
 		border-right: none;
 		border-radius: 0;
+	}
+	a {
+		color: #0E60B1;;
 	}
 	.linenos {
 		display: none;
