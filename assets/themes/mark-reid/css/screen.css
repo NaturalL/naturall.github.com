@@ -682,6 +682,7 @@ p > img {
 
 	#site {
 		margin-top: 5px;
+		margin-bottom: 5px;
 	}
     #page, #disqus_thread {
 	    padding: 16px;
