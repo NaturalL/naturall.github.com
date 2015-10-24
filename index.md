@@ -9,9 +9,9 @@ tagline: Supporting tagline
 
 
 偏见
+
+
     
-
-
 
 <ul class="posts">
   {% for post in site.posts %}
