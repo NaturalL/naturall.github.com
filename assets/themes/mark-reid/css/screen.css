@@ -44,7 +44,7 @@ p {
  	text-align: justify;
 }
 
-.post p {
+.post > p {
 	text-indent: 2em;
 }
 a { text-decoration: none; color: rgba(0, 95, 189, 1); }
@@ -627,4 +627,110 @@ img.maruku-png { }
     bottom: 20px;
     right: 20px;
     cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------custom----------------------------*/
+
+.highlighttable .highlight {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.linenos + .code pre {
+	max-width: none;
+}
+
+ol {
+	text-indent: 2em;
+	margin-bottom: 20px;
+}
+
+a {word-break:break-all;}
+
+p img {
+	max-width: 100%;
+
+}
+
+p > img {
+    
+    margin: 5px auto;
+}
+
+.dsq-brlink {
+	display: none;
+}
+
+@media screen and (max-width: 900px) {
+
+	#site {
+		margin-top: 5px;
+	}
+    #page, #disqus_thread {
+	    padding: 16px;
+	    margin: 10px;
+	   /*// border: none;*/
+	    box-shadow: none;
+
+	}
+	
+	#footer {
+		display: none;
+	}
+	#toTop img {
+		width: 29px;
+		height: 38px;
+	}
+	#header img {
+		display: none;
+	}
+	#header {
+		margin: 0 auto;
+	}
+	#header h1 {
+		text-align: center;
+		margin: 10px 0 0 0;
+	}
+	#header .byline {
+		display: none;
+	}
+
+	#header .nav {
+		padding: 0;
+		text-align: center;
+		width: 100%;
+		position: relative;
+		font-size: 16px;
+		margin-top: 10px;
+	}
+	.m-h {
+		display: none !important;
+	}
+
+	
+}
+
+@media screen and (max-width: 500px) {
+	pre {
+		margin-left: -16px;
+		margin-right: -16px;
+		border-left: none;
+		border-right: none;
+		border-radius: 0;
+	}
+	.linenos {
+		display: none;
+	}
 }

@@ -11,3 +11,7 @@ $('#cat-left').click(function() {
 $('#toTop').click(function() {
     $('html, body').animate({scrollTop: '0px'}, 400);
 })
+
+
+$('p > img').parent().css("text-align","center");
+$('p > img').parent().css("text-indent", '0em');
