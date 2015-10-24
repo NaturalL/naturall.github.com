@@ -652,6 +652,11 @@ img.maruku-png { }
 	max-width: none;
 }
 
+#page  {
+	word-break: break-all;
+	word-wrap : break-word;
+}
+
 ol {
 	text-indent: 2em;
 	margin-bottom: 20px;
