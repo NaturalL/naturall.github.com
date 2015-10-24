@@ -686,8 +686,8 @@ p > img {
     #page, #disqus_thread {
 	    padding: 16px;
 	    margin: 10px;
-	   /*// border: none;*/
-	    box-shadow: none;
+	   
+	    /*box-shadow: none;*/
 
 	}
 	
