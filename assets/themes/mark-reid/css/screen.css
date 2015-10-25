@@ -803,3 +803,6 @@ p > img {
 	padding-left: 4px;
 }
 
+#analysis {
+	display: none;
+}
