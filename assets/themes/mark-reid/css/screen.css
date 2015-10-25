@@ -383,7 +383,7 @@ pre {
 	/*font-size: 0.85em;  Hack to make code look same size as body font   */
 	/*line-height: 1.3em;	*/
 	font-size: 13px;
-	line-height: 16px;
+	line-height: 1.45;
 	overflow: auto;
 
 	display:block;
