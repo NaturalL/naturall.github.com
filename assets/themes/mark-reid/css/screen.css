@@ -41,14 +41,14 @@ img { -ms-interpolation-mode:bicubic; }
 html>body { font-size:16px; }
 p {
  	margin: 0 0 0 0;
- 	text-align: justify;
+ 	text-align: left;
 }
 
 .post > p {
 	text-indent: 2em;
 }
 a { text-decoration: none; color: rgba(0, 95, 189, 1); }
-a:hover { text-decoration: underline; color: rgba(0, 95, 189, 1); }
+a:hover { text-decoration: none; color: rgba(0, 95, 189, 1); }
 a .pdf :before { 
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
@@ -681,6 +681,7 @@ p > img {
 .emphnext {
 	font-size: 1.3em;
 	margin: 0px;
+	color: #333;
 }
 
 .github {
@@ -761,4 +762,32 @@ p > img {
 	.linenos {
 		display: none;
 	}
+}
+
+
+.prev-next {
+    font-size: 14px;
+    height: auto;
+    overflow: hidden;
+}
+
+.prev-next .prev {
+	display: inline-block;
+}
+
+.prev-next .next {
+	margin-bottom: 8px;
+}
+
+.prev-next a {
+	background: #eee;
+	border-radius: 4px;
+	padding: 0 5px;
+}
+
+
+#page > .date {
+	display: inline-block;
+	margin-top: 5px;
+	padding-left: 4px;
 }
