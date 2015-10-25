@@ -380,8 +380,10 @@ p.excerpt { margin: 0; }
 /* @group Code */
 
 pre {
-	font-size: 0.85em; /* Hack to make code look same size as body font */  
-	line-height: 1.3em;	
+	/*font-size: 0.85em;  Hack to make code look same size as body font   */
+	/*line-height: 1.3em;	*/
+	font-size: 13px;
+	line-height: 16px;
 	overflow: auto;
 
 	display:block;
@@ -708,7 +710,7 @@ p > img {
 	    padding: 16px;
 	    margin: 10px;
 	   
-	    /*box-shadow: none;*/
+	    box-shadow: none;
 
 	}
 	
@@ -749,6 +751,15 @@ p > img {
 }
 
 @media screen and (max-width: 500px) {
+	#page, #disqus_thread {
+		background: white;
+		border: 1px solid #ddd;
+	}
+
+	#disqus_thread {
+		background: #eee;
+	}
+
 	pre {
 		margin-left: -16px;
 		margin-right: -16px;
@@ -791,3 +802,4 @@ p > img {
 	margin-top: 5px;
 	padding-left: 4px;
 }
+
