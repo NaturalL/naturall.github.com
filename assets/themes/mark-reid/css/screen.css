@@ -655,7 +655,7 @@ img.maruku-png { }
 }
 
 #page  li {
-	word-break: break-all;
+	/*word-break: break-all;*/
 	word-wrap : break-word;
 }
 
@@ -664,7 +664,10 @@ ol {
 	margin-bottom: 20px;
 }
 
-a {word-break:break-all;}
+#page a {
+	/*word-break:break-all;*/
+	word-wrap: break-word;
+}
 
 p img {
 	max-width: 100%;
