@@ -1,3 +1,7 @@
+## 请修改站长统计帐号，还有disqus
+cnzz _includes/themes/mark-reid/default.html
+
+
 # Jekyll-Bootstrap
 
 The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages
