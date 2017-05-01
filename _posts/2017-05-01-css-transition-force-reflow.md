@@ -10,7 +10,7 @@ tags: [前端,css]
 
 最近需要修改bootstrap的轮播插件，把隐藏slide从display:none改为visibility:hidden，修修补补改完后在Firefox可以运行，但是在Chrome就不行了。
 
-发现两个浏览器用的不是相同的CSS，Firefox通过transition: 0.6s ease-in-out left;产生过渡动画，而Chrome是通过transition: transform 0.6s ease-in-out，这种方式可能有硬件加速吧。
+发现两个浏览器用的不是相同的CSS，Firefox通过transition: 0.6s ease-in-out left;产生过渡动画，而Chrome是通过transition: transform 0.6s ease-in-out，这种方式不需要重新计算css属性，更流畅。
 
 [jsfiddle 问题demo](https://jsfiddle.net/25d3ga9j/28/)
 
@@ -24,4 +24,5 @@ fore reflow的细节还是有待了解。
 
 ### force reflow
 [http://semisignal.com/?p=5298](http://semisignal.com/?p=5298)
+
 [All you need to know about CSS Transitions](https://blog.alexmaccaw.com/css-transitions)
