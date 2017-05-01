@@ -16,11 +16,12 @@ tags: [前端,css]
 
 通过打印transform属性发现，display:block并且包含transition时，force reflow没有生效（没有到最终状态，即过渡动画结束时的状态）。
 
-取消next的过渡效果，问题就解决了。（https://jsfiddle.net/25d3ga9j/25/）
+取消next的过渡效果，问题就解决了。[demo](https://jsfiddle.net/25d3ga9j/25/)
 
+fore reflow的细节还是有待了解。
 
 
 
 ### force reflow
-(http://semisignal.com/?p=5298)
+[http://semisignal.com/?p=5298](http://semisignal.com/?p=5298)
 
