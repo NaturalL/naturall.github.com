@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  
+  <title>Chrome里,body {display:flex;}导致JQuery toggle行为改变 | Bias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="toggle,css,jquery,datepicker">
+<meta name="keywords" content="前端,css,jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome里,body {display:flex;}导致JQuery toggle行为改变">
+<meta property="og:url" content="http://yoursite.com/2016/12/18/JQuery-toggle/index.html">
+<meta property="og:site_name" content="Bias">
+<meta property="og:description" content="toggle,css,jquery,datepicker">
+<meta property="og:updated_time" content="2018-01-06T16:32:04.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chrome里,body {display:flex;}导致JQuery toggle行为改变">
+<meta name="twitter:description" content="toggle,css,jquery,datepicker">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+
+<body>
+<div id="site">
+  
+  <div id="header">
+    <h1>
+      <a href="/">Bias</a>
+      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
+      <img src="/img/logo.png" width="60" height="45"/>
+    </h1>
+
+    <ul class="nav">
+      
+        <li><a class="m-h" href="/">Home</a></li>
+      
+        <li><a class="m-h" href="/about">About</a></li>
+      
+    </ul>
+  </div>
+
+
+  <div id="page">
+    
+<article id="post" class="post">
+  
+  <h1 class="title">Chrome里,body {display:flex;}导致JQuery toggle行为改变</h1>
+  <span class="date"><i class="fa fa-calendar"></i> 2016-12-18</span>
+  
+
+
+  <p>kibana里加上bootstrap-datepicker，在chrome里today按钮排版乱了，发现th被加上了display:block样式，默认应该是table-cell.</p>
+<p>先看bootstrap-datepicker的代码，是在通过jquery创建html元素后，但并未写入document时，调用的toggle;再看jquery toggle的代码，发现未写入document的元素，display属性是””，toggle显示时会去获取th标签的默认display属性。获取方式如下：</p>
+<pre><code>/**
+ * Try to determine the default display value of an element
+ * @param {String} nodeName
+ */
+function defaultDisplay( nodeName ) {
+    var doc = document,
+        display = elemdisplay[ nodeName ];
+
+    if ( !display ) {
+        display = actualDisplay( nodeName, doc );
+
+        // If the simple way fails, read from inside an iframe
+        if ( display === &quot;none&quot; || !display ) {
+
+            // Use the already-created iframe if possible
+            iframe = (iframe || jQuery( &quot;&lt;iframe frameborder=&apos;0&apos; width=&apos;0&apos; height=&apos;0&apos;/&gt;&quot; )).appendTo( doc.documentElement );
+
+            // Always write a new HTML skeleton so Webkit and Firefox don&apos;t choke on reuse
+            doc = iframe[ 0 ].contentDocument;
+
+            // Support: IE
+            doc.write();
+            doc.close();
+
+            display = actualDisplay( nodeName, doc );
+            iframe.detach();
+        }
+
+        // Store the correct default display
+        elemdisplay[ nodeName ] = display;
+    }
+
+    return display;
+}
+
+
+// Called only from within defaultDisplay
+function actualDisplay( name, doc ) {
+    var style,
+        elem = jQuery( doc.createElement( name ) ).appendTo( doc.body ),
+
+        // getDefaultComputedStyle might be reliably used only on attached element
+        display = window.getDefaultComputedStyle &amp;&amp; ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
+
+            // Use of this method is a temporary fix (more like optimization) until something better comes along,
+            // since it was removed from specification and supported only in FF
+            style.display : jQuery.css( elem[ 0 ], &quot;display&quot; );
+
+    // We don&apos;t have any data stored on the element,
+    // so use &quot;detach&quot; method as fast way to get rid of the element
+    elem.detach();
+
+    return display;
+}
+</code></pre><p>可见是通过在一个iframe里写入对应标签再去获取display属性，但是kibana页面包含css body {display:flex;}，获取到th标签的默认display却是block，按理说iframe里的不会被外部css影响的啊。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>对于date-picker，可以通过添加show事件，修正display.</p>
+<pre><code>$(&apos;#sandbox-container input&apos;).datepicker({
+    todayBtn: &quot;linked&quot;
+}).on(&apos;show&apos;, function(e) {
+    $(&apos;.today&apos;).css(&apos;display&apos;,&apos;table-cell&apos;)
+});
+</code></pre><p>对于其他情况，使用toogleClass应该更明确、可控。</p>
+<h3 id="jsfiddle示例"><a href="#jsfiddle示例" class="headerlink" title="jsfiddle示例"></a>jsfiddle示例</h3><p><a href="https://jsfiddle.net/zjmove/L0huqLeu/" target="_blank" rel="noopener">document外</a></p>
+<p><a href="https://jsfiddle.net/zjmove/8qvtvcjr/" target="_blank" rel="noopener">document内</a></p>
+
+
+  <address class="signature">
+    <a class="author" href="/">NaturalL</a> 
+    <span class="date">2016-12-18</span>
+  </address>
+
+  
+  <div class="prev-next">
+  
+    <a href="/2017/05/01/css-transition-force-reflow/" class="next" title="CSS transition force reflow">CSS transition force reflow <i class="fa fa-hand-o-right"></i> </a>
+  
+
+  
+    <a href="/2016/01/22/STL-sort-segmentation-fault/" class="prev" title="C++ Sort Segmentation Fault"><i class="fa fa-hand-o-left"></i> C++ Sort Segmentation Fault</a>
+  
+  </div>
+
+  
+</article>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+
+<script>
+  var disqus_shortname = 'flyjoy';
+  
+  var disqus_url = 'http://yoursite.com/2016/12/18/JQuery-toggle/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+  <div id="toTop">
+    <img src="/img/toTop.png" width="59" height="76"/>
+  </div>
+  
+</div>
+
+<!--   {% include JB/analytics %}
+  <div id="analysis">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div> -->
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

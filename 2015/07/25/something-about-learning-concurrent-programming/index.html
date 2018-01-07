@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  
+  <title>一些并发编程的学习 | Bias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对于并发编程，除了操作系统课上学的那点知识，我的实践很少。 本科时的实践，一个是用在聊天小程序上，一个线程收，一个线程发；还有是写界面程序时，GUI单独一个线程。仅此而已。 后来接触node.js 和redis, 了解了一些事件驱动的单线程并发模型。对于并发编程，比如如何用好多线程、锁、同步之类的，也挺好奇的，哈，我觉得这是一个提高自己的好方向。 第一本看的书是《Seven Concurrency">
+<meta name="keywords" content="java,concurrent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些并发编程的学习">
+<meta property="og:url" content="http://yoursite.com/2015/07/25/something-about-learning-concurrent-programming/index.html">
+<meta property="og:site_name" content="Bias">
+<meta property="og:description" content="对于并发编程，除了操作系统课上学的那点知识，我的实践很少。 本科时的实践，一个是用在聊天小程序上，一个线程收，一个线程发；还有是写界面程序时，GUI单独一个线程。仅此而已。 后来接触node.js 和redis, 了解了一些事件驱动的单线程并发模型。对于并发编程，比如如何用好多线程、锁、同步之类的，也挺好奇的，哈，我觉得这是一个提高自己的好方向。 第一本看的书是《Seven Concurrency">
+<meta property="og:updated_time" content="2018-01-06T16:32:28.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些并发编程的学习">
+<meta name="twitter:description" content="对于并发编程，除了操作系统课上学的那点知识，我的实践很少。 本科时的实践，一个是用在聊天小程序上，一个线程收，一个线程发；还有是写界面程序时，GUI单独一个线程。仅此而已。 后来接触node.js 和redis, 了解了一些事件驱动的单线程并发模型。对于并发编程，比如如何用好多线程、锁、同步之类的，也挺好奇的，哈，我觉得这是一个提高自己的好方向。 第一本看的书是《Seven Concurrency">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+
+<body>
+<div id="site">
+  
+  <div id="header">
+    <h1>
+      <a href="/">Bias</a>
+      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
+      <img src="/img/logo.png" width="60" height="45"/>
+    </h1>
+
+    <ul class="nav">
+      
+        <li><a class="m-h" href="/">Home</a></li>
+      
+        <li><a class="m-h" href="/about">About</a></li>
+      
+    </ul>
+  </div>
+
+
+  <div id="page">
+    
+<article id="post" class="post">
+  
+  <h1 class="title">一些并发编程的学习</h1>
+  <span class="date"><i class="fa fa-calendar"></i> 2015-07-25</span>
+  
+
+
+  <p>对于并发编程，除了操作系统课上学的那点知识，我的实践很少。</p>
+<p>本科时的实践，一个是用在聊天小程序上，一个线程收，一个线程发；还有是写界面程序时，GUI单独一个线程。仅此而已。</p>
+<p>后来接触node.js 和redis, 了解了一些事件驱动的单线程并发模型。对于并发编程，比如如何用好多线程、锁、同步之类的，也挺好奇的，哈，我觉得这是一个提高自己的好方向。</p>
+<p>第一本看的书是《Seven Concurrency Models in Seven Weeks》英文版PDF，即《七周七并发模型》, 互动出版网上也有中文翻译版卖。（嘿嘿，在互动出版网上买了我的第一本计算机书，《算法导论》）</p>
+<p>这本书还是蛮不错的，起码给了我一个基本认识，还接触了一点函数式编程语言Clojure，认识了一点go、erlang的特性。</p>
+<p>具体内容就不说了，感兴趣可以看看。这里列一下章节目录：</p>
+<ol>
+<li>Introduction</li>
+<li>Threads and Locks</li>
+<li>Functional Programming</li>
+<li>The Clojure Way—Separating Identity from State</li>
+<li>Actors</li>
+<li>Communicating Sequential Processes</li>
+<li>Data Parallelism</li>
+<li>The Lambda Architecture</li>
+</ol>
+<p>每章分为3Day, 一周。</p>
+<p>第二本书是实习时开始看的，只看了一半，还在看，叫《Java.Concurrency.in.Practice》。</p>
+<p>据说这书经典，但是我看文字太多了，图比较少，似乎不太直观。此书谈到的问题还是很实用的，包含Java的内存模型，什么线程安全、内存可见性、同步方式、线程池、阻塞中断等等，还有 java.util.concurrent包里很多类的使用方法等等。</p>
+<blockquote>
+<p>推荐:<br>并发编程网 <a href="http://ifeve.com/" target="_blank" rel="noopener">http://ifeve.com/</a><br>InfoQ: <a href="http://www.infoq.com/cn" target="_blank" rel="noopener">http://www.infoq.com/cn</a></p>
+</blockquote>
+<p>很多知识知道是知道一点，但是没有去用，总徘徊在门外。只有心里有兴趣，有很大疑惑，或者需要的时候才会去看。</p>
+<p>有相关项目，一边做一边学，没事看看java.util.concurrent里一些类的实现方式，设计思路，也蛮不错的。</p>
+
+
+  <address class="signature">
+    <a class="author" href="/">NaturalL</a> 
+    <span class="date">2015-07-25</span>
+  </address>
+
+  
+  <div class="prev-next">
+  
+    <a href="/2015/09/13/interview-experience/" class="next" title="几次失败面试">几次失败面试 <i class="fa fa-hand-o-right"></i> </a>
+  
+
+  
+    <a href="/2015/01/06/websites-worth-visiting/" class="prev" title="值得访问的网站"><i class="fa fa-hand-o-left"></i> 值得访问的网站</a>
+  
+  </div>
+
+  
+</article>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+
+<script>
+  var disqus_shortname = 'flyjoy';
+  
+  var disqus_url = 'http://yoursite.com/2015/07/25/something-about-learning-concurrent-programming/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+  <div id="toTop">
+    <img src="/img/toTop.png" width="59" height="76"/>
+  </div>
+  
+</div>
+
+<!--   {% include JB/analytics %}
+  <div id="analysis">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div> -->
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

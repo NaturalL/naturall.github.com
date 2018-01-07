@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  
+  <title>Timing attack-计时攻击 | Bias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="看tj的cookie-signature时，有一行代码很奇怪。 return exports.sign(mac, secret) == exports.sign(val, secret) ? str : false; 其中sign函数的作用是对message生成hmac-sha256消息验证码,只要mac 等于 val,返回结果肯定相同。为什么多次一举，而不直接写成: return mac ===">
+<meta name="keywords" content="attack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Timing attack-计时攻击">
+<meta property="og:url" content="http://yoursite.com/2014/11/06/Timing-attack/index.html">
+<meta property="og:site_name" content="Bias">
+<meta property="og:description" content="看tj的cookie-signature时，有一行代码很奇怪。 return exports.sign(mac, secret) == exports.sign(val, secret) ? str : false; 其中sign函数的作用是对message生成hmac-sha256消息验证码,只要mac 等于 val,返回结果肯定相同。为什么多次一举，而不直接写成: return mac ===">
+<meta property="og:updated_time" content="2018-01-06T16:24:39.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Timing attack-计时攻击">
+<meta name="twitter:description" content="看tj的cookie-signature时，有一行代码很奇怪。 return exports.sign(mac, secret) == exports.sign(val, secret) ? str : false; 其中sign函数的作用是对message生成hmac-sha256消息验证码,只要mac 等于 val,返回结果肯定相同。为什么多次一举，而不直接写成: return mac ===">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+
+<body>
+<div id="site">
+  
+  <div id="header">
+    <h1>
+      <a href="/">Bias</a>
+      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
+      <img src="/img/logo.png" width="60" height="45"/>
+    </h1>
+
+    <ul class="nav">
+      
+        <li><a class="m-h" href="/">Home</a></li>
+      
+        <li><a class="m-h" href="/about">About</a></li>
+      
+    </ul>
+  </div>
+
+
+  <div id="page">
+    
+<article id="post" class="post">
+  
+  <h1 class="title">Timing attack-计时攻击</h1>
+  <span class="date"><i class="fa fa-calendar"></i> 2014-11-06</span>
+  
+
+
+  <p>看tj的cookie-signature时，有一行代码很奇怪。</p>
+<pre><code>return exports.sign(mac, secret) == exports.sign(val, secret) ? str : false;
+</code></pre><p>其中sign函数的作用是对message生成hmac-sha256消息验证码,只要mac 等于 val,返回结果肯定相同。<br>为什么多次一举，而不直接写成:</p>
+<pre><code>return mac === val ? str : false;
+</code></pre><p>查看github上的 History.md后得知，这是为了防止计时攻击（Timing-attack）。<br>因为如果这样写，如果mac等于111111,val等于222222,那么只要比较第一个字符就能确定不相等，这就泄漏了时间信息，就可能可以通过调整val的第一个字符，比较时间长短，最终得知mac的第一个字符为1，进而泄漏整个mac。</p>
+<p>而且第一种写法也不正确，已经修改为：</p>
+<pre><code>return sha1(mac) == sha1(val) ? str : false;
+</code></pre><p>通过再次sha1,能够保证足够的随机性，即使mac和val只有一个字符不同，sha1处理后也是完全不同的。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://github.com/tj/node-cookie-signature/issues/15" target="_blank" rel="noopener">github上的讨论</a></p>
+<p><a href="https://github.com/tj/node-cookie-signature" target="_blank" rel="noopener">cookie-signature</a></p>
+
+
+  <address class="signature">
+    <a class="author" href="/">NaturalL</a> 
+    <span class="date">2014-11-06</span>
+  </address>
+
+  
+  <div class="prev-next">
+  
+    <a href="/2015/01/06/websites-worth-visiting/" class="next" title="值得访问的网站">值得访问的网站 <i class="fa fa-hand-o-right"></i> </a>
+  
+
+  
+    <a href="/2014/10/23/zju-mail/" class="prev" title="X-notifier ZJU邮箱脚本"><i class="fa fa-hand-o-left"></i> X-notifier ZJU邮箱脚本</a>
+  
+  </div>
+
+  
+</article>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+
+<script>
+  var disqus_shortname = 'flyjoy';
+  
+  var disqus_url = 'http://yoursite.com/2014/11/06/Timing-attack/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+  <div id="toTop">
+    <img src="/img/toTop.png" width="59" height="76"/>
+  </div>
+  
+</div>
+
+<!--   {% include JB/analytics %}
+  <div id="analysis">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div> -->
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

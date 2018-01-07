@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  
+  <title>迁移ubuntu到另一块硬盘 | Bias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。 复制分区#将分区 sdb3 复制到 sda9 dd if=/dev/sdb3 of=/dev/sda9 这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。 修改fstab复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。 更新新硬盘">
+<meta name="keywords" content="ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迁移ubuntu到另一块硬盘">
+<meta property="og:url" content="http://yoursite.com/2014/06/19/copy-ubuntu/index.html">
+<meta property="og:site_name" content="Bias">
+<meta property="og:description" content="实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。 复制分区#将分区 sdb3 复制到 sda9 dd if=/dev/sdb3 of=/dev/sda9 这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。 修改fstab复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。 更新新硬盘">
+<meta property="og:updated_time" content="2018-01-06T16:54:24.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迁移ubuntu到另一块硬盘">
+<meta name="twitter:description" content="实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。 复制分区#将分区 sdb3 复制到 sda9 dd if=/dev/sdb3 of=/dev/sda9 这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。 修改fstab复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。 更新新硬盘">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+
+<body>
+<div id="site">
+  
+  <div id="header">
+    <h1>
+      <a href="/">Bias</a>
+      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
+      <img src="/img/logo.png" width="60" height="45"/>
+    </h1>
+
+    <ul class="nav">
+      
+        <li><a class="m-h" href="/">Home</a></li>
+      
+        <li><a class="m-h" href="/about">About</a></li>
+      
+    </ul>
+  </div>
+
+
+  <div id="page">
+    
+<article id="post" class="post">
+  
+  <h1 class="title">迁移ubuntu到另一块硬盘</h1>
+  <span class="date"><i class="fa fa-calendar"></i> 2014-06-19</span>
+  
+
+
+  <p>实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。</p>
+<h2 id="复制分区"><a href="#复制分区" class="headerlink" title="复制分区"></a>复制分区</h2><pre><code>#将分区 sdb3 复制到 sda9
+dd if=/dev/sdb3 of=/dev/sda9
+</code></pre><p>这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。</p>
+<h2 id="修改fstab"><a href="#修改fstab" class="headerlink" title="修改fstab"></a>修改fstab</h2><p>复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。</p>
+<h2 id="更新新硬盘上系统的grub"><a href="#更新新硬盘上系统的grub" class="headerlink" title="更新新硬盘上系统的grub"></a>更新新硬盘上系统的grub</h2><p>dd复制后的/boot/grub中仍然是旧的引导信息，我需要更新。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http://askubuntu.com/questions/145241/how-do-i-run-update-grub-from-a-livecd" target="_blank" rel="noopener">http://askubuntu.com/questions/145241/how-do-i-run-update-grub-from-a-livecd</a></p>
+<p><a href="http://ubuntuforums.org/showthread.php?t=1581099/" target="_blank" rel="noopener">http://ubuntuforums.org/showthread.php?t=1581099/</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上几步需要根据实际需求来。</p>
+
+
+  <address class="signature">
+    <a class="author" href="/">NaturalL</a> 
+    <span class="date">2014-06-19</span>
+  </address>
+
+  
+  <div class="prev-next">
+  
+    <a href="/2014/10/23/zju-mail/" class="next" title="X-notifier ZJU邮箱脚本">X-notifier ZJU邮箱脚本 <i class="fa fa-hand-o-right"></i> </a>
+  
+
+  
+    <a href="/2013/08/30/2013-08-30-1/" class="prev" title="Vimeo"><i class="fa fa-hand-o-left"></i> Vimeo</a>
+  
+  </div>
+
+  
+</article>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+
+<script>
+  var disqus_shortname = 'flyjoy';
+  
+  var disqus_url = 'http://yoursite.com/2014/06/19/copy-ubuntu/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+  <div id="toTop">
+    <img src="/img/toTop.png" width="59" height="76"/>
+  </div>
+  
+</div>
+
+<!--   {% include JB/analytics %}
+  <div id="analysis">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div> -->
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
