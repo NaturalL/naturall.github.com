@@ -738,13 +738,11 @@ p > img {
 }
 @media screen and (max-width: 900px) {
   #site {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px 10px;
   }
   #page,
   #disqus_thread {
     padding: 16px;
-    margin: 10px;
     box-shadow: none;
   }
   #footer {
@@ -753,30 +751,6 @@ p > img {
   #toTop img {
     width: 29px;
     height: 38px;
-  }
-  #header img {
-    display: none;
-  }
-  #header {
-    margin: 0 auto;
-  }
-  #header .site-name {
-    text-align: center;
-    width: 100%;
-  }
-  #header .byline {
-    display: none;
-  }
-  #header .nav {
-    padding: 0;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  .m-h {
-    display: none !important;
   }
 }
 @media screen and (max-width: 500px) {
