@@ -4,14 +4,14 @@
   <meta charset="utf-8">
 
   
-  <title>迁移ubuntu到另一块硬盘 | Bias</title>
+  <title>迁移ubuntu到另一块硬盘 | BiaSee</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。 复制分区#将分区 sdb3 复制到 sda9 dd if=/dev/sdb3 of=/dev/sda9 这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。 修改fstab复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。 更新新硬盘">
 <meta name="keywords" content="ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="迁移ubuntu到另一块硬盘">
 <meta property="og:url" content="http://yoursite.com/2014/06/19/copy-ubuntu/index.html">
-<meta property="og:site_name" content="Bias">
+<meta property="og:site_name" content="BiaSee">
 <meta property="og:description" content="实验室的一块硬盘太旧了，提示即将损坏，所以决定把上面的ubuntu系统迁移到另一块硬盘上去。 复制分区#将分区 sdb3 复制到 sda9 dd if=/dev/sdb3 of=/dev/sda9 这种方法将同时复制分区大小，分区的uuid。需要重新调整sda9的大小和uuid。 修改fstab复制完成后，修改/etc/fstab中的uuid. fstab中记录了启动时需要挂载的分区。 更新新硬盘">
 <meta property="og:updated_time" content="2018-01-06T16:54:24.216Z">
 <meta name="twitter:card" content="summary">
@@ -34,7 +34,7 @@
   
   <div id="header">
     <div class="site-name">
-      <a href="/">Bias</a>
+      <a href="/">BiaSee</a>
     </div>
 
     <ul class="nav">
@@ -54,7 +54,7 @@
   <h1 class="title">迁移ubuntu到另一块硬盘</h1>
   <div class="post-meta">
     <span class="date"><i class="fa fa-calendar"></i> 2014-06-19</span>
-    <span class="author"><i class="fa fa-user"></i> NaturalL</span>
+    <span class="author"><i class="fa fa-user"></i> BiaSee</span>
   </div>
 
   
