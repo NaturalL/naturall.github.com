@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/01/css-transition-force-reflow/index.html">
 <meta property="og:site_name" content="Bias">
 <meta property="og:description" content="transition,css,translate3d">
-<meta property="og:updated_time" content="2018-01-06T16:32:22.157Z">
+<meta property="og:updated_time" content="2018-01-07T09:19:39.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS transition force reflow">
 <meta name="twitter:description" content="transition,css,translate3d">
@@ -33,11 +33,9 @@
 <div id="site">
   
   <div id="header">
-    <h1>
+    <div class="site-name">
       <a href="/">Bias</a>
-      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
-      <img src="/img/logo.png" width="60" height="45"/>
-    </h1>
+    </div>
 
     <ul class="nav">
       
@@ -54,24 +52,21 @@
 <article id="post" class="post">
   
   <h1 class="title">CSS transition force reflow</h1>
-  <span class="date"><i class="fa fa-calendar"></i> 2017-05-01</span>
+  <div class="post-meta">
+    <span class="date"><i class="fa fa-calendar"></i> 2017-05-01</span>
+    <span class="author"><i class="fa fa-user"></i> NaturalL</span>
+  </div>
+
   
-
-
   <p>最近需要修改bootstrap的轮播插件，把隐藏slide从display:none改为visibility:hidden，修修补补改完后在Firefox可以运行，但是在Chrome就不行了。</p>
 <p>发现两个浏览器用的不是相同的CSS，Firefox通过transition: 0.6s ease-in-out left;产生过渡动画，而Chrome是通过transition: transform 0.6s ease-in-out，这种方式不需要重新计算css属性，更流畅。</p>
 <p><a href="https://jsfiddle.net/25d3ga9j/28/" target="_blank" rel="noopener">jsfiddle 问题demo</a></p>
 <p>通过打印transform属性发现，display:block并且包含transition时，force reflow没有生效（没有到最终状态，即过渡动画结束时的状态）。</p>
 <p>取消next的过渡效果，问题就解决了。<a href="https://jsfiddle.net/25d3ga9j/25/" target="_blank" rel="noopener">demo</a></p>
 <p>fore reflow的细节还是有待了解。</p>
-<h3 id="force-reflow"><a href="#force-reflow" class="headerlink" title="force reflow"></a>force reflow</h3><p><a href="http://semisignal.com/?p=5298" target="_blank" rel="noopener">http://semisignal.com/?p=5298</a></p>
+<h2 id="force-reflow"><a href="#force-reflow" class="headerlink" title="force reflow"></a>force reflow</h2><p><a href="http://semisignal.com/?p=5298" target="_blank" rel="noopener">http://semisignal.com/?p=5298</a></p>
 <p><a href="https://blog.alexmaccaw.com/css-transitions" target="_blank" rel="noopener">All you need to know about CSS Transitions</a></p>
 
-
-  <address class="signature">
-    <a class="author" href="/">NaturalL</a> 
-    <span class="date">2017-05-01</span>
-  </address>
 
   
   <div class="prev-next">
@@ -117,7 +112,7 @@
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
   </div> -->
 
-  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
 
   <script src="/js/script.js"></script>

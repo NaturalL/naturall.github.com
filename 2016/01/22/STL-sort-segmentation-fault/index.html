@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/01/22/STL-sort-segmentation-fault/index.html">
 <meta property="og:site_name" content="Bias">
 <meta property="og:description" content="c++,段错误,segmentation fault,sort">
-<meta property="og:updated_time" content="2018-01-06T16:32:11.583Z">
+<meta property="og:updated_time" content="2018-01-07T09:19:28.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Sort Segmentation Fault">
 <meta name="twitter:description" content="c++,段错误,segmentation fault,sort">
@@ -33,11 +33,9 @@
 <div id="site">
   
   <div id="header">
-    <h1>
+    <div class="site-name">
       <a href="/">Bias</a>
-      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
-      <img src="/img/logo.png" width="60" height="45"/>
-    </h1>
+    </div>
 
     <ul class="nav">
       
@@ -54,15 +52,17 @@
 <article id="post" class="post">
   
   <h1 class="title">C++ Sort Segmentation Fault</h1>
-  <span class="date"><i class="fa fa-calendar"></i> 2016-01-22</span>
+  <div class="post-meta">
+    <span class="date"><i class="fa fa-calendar"></i> 2016-01-22</span>
+    <span class="author"><i class="fa fa-user"></i> NaturalL</span>
+  </div>
+
   
-
-
   <p>C++ std的sort，compare函数写成下面这样，可能出现segmentation fault，因为写成a&gt;=b是错误的，不符合stl的strict weak ordering关系。</p>
 <pre><code>bool cmp(int a,int b){
     return a&gt;=b;
 }
-</code></pre><h3 id="std-sort"><a href="#std-sort" class="headerlink" title="std::sort"></a>std::sort</h3><pre><code>template&lt; class RandomIt, class Compare &gt;
+</code></pre><h2 id="std-sort"><a href="#std-sort" class="headerlink" title="std::sort"></a>std::sort</h2><pre><code>template&lt; class RandomIt, class Compare &gt;
 
 void sort( RandomIt first, RandomIt last, Compare comp );
 </code></pre><p>其中<a href="http://en.cppreference.com/w/cpp/concept/Compare" target="_blank" rel="noopener">Compare</a>函数需要满足strict weak ordering关系,即：</p>
@@ -89,13 +89,8 @@ _RandomAccessIter __unguarded_partition(_RandomAccessIter __first,
 }
 </code></pre><p>可见第二层while循环并没有检查边界，pivot应该在首/尾吧，只要compare满足strict weak ordering，访问就不会越界;否则，有可能一直++__first，它就跑过头了，很可能导致段错误。</p>
 <p>这种方式避免了边界检查，优点是效率高点。</p>
-<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p><a href="https://www.sgi.com/tech/stl/download.html" target="_blank" rel="noopener">stl_algo.h</a></p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://www.sgi.com/tech/stl/download.html" target="_blank" rel="noopener">stl_algo.h</a></p>
 
-
-  <address class="signature">
-    <a class="author" href="/">NaturalL</a> 
-    <span class="date">2016-01-22</span>
-  </address>
 
   
   <div class="prev-next">
@@ -143,7 +138,7 @@ _RandomAccessIter __unguarded_partition(_RandomAccessIter __first,
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
   </div> -->
 
-  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
 
   <script src="/js/script.js"></script>

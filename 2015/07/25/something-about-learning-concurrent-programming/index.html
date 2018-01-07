@@ -33,11 +33,9 @@
 <div id="site">
   
   <div id="header">
-    <h1>
+    <div class="site-name">
       <a href="/">Bias</a>
-      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
-      <img src="/img/logo.png" width="60" height="45"/>
-    </h1>
+    </div>
 
     <ul class="nav">
       
@@ -54,10 +52,12 @@
 <article id="post" class="post">
   
   <h1 class="title">一些并发编程的学习</h1>
-  <span class="date"><i class="fa fa-calendar"></i> 2015-07-25</span>
+  <div class="post-meta">
+    <span class="date"><i class="fa fa-calendar"></i> 2015-07-25</span>
+    <span class="author"><i class="fa fa-user"></i> NaturalL</span>
+  </div>
+
   
-
-
   <p>对于并发编程，除了操作系统课上学的那点知识，我的实践很少。</p>
 <p>本科时的实践，一个是用在聊天小程序上，一个线程收，一个线程发；还有是写界面程序时，GUI单独一个线程。仅此而已。</p>
 <p>后来接触node.js 和redis, 了解了一些事件驱动的单线程并发模型。对于并发编程，比如如何用好多线程、锁、同步之类的，也挺好奇的，哈，我觉得这是一个提高自己的好方向。</p>
@@ -83,11 +83,6 @@
 <p>很多知识知道是知道一点，但是没有去用，总徘徊在门外。只有心里有兴趣，有很大疑惑，或者需要的时候才会去看。</p>
 <p>有相关项目，一边做一边学，没事看看java.util.concurrent里一些类的实现方式，设计思路，也蛮不错的。</p>
 
-
-  <address class="signature">
-    <a class="author" href="/">NaturalL</a> 
-    <span class="date">2015-07-25</span>
-  </address>
 
   
   <div class="prev-next">
@@ -135,7 +130,7 @@
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
   </div> -->
 
-  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
 
   <script src="/js/script.js"></script>

@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://yoursite.com/2014/10/23/zju-mail/index.html">
 <meta property="og:site_name" content="Bias">
 <meta property="og:description" content="一年前写的X-notifier 的浙大邮箱脚本，最近又修改了下，长时间开启浏览器也不会出现sid timeout了。 X-notifierX-notifier 是一个邮箱提醒浏览器插件，支持多邮箱（官网script），也可以自己编写script支持更多邮箱。 ZJUMail.js/**********************************************************Z">
-<meta property="og:updated_time" content="2018-01-06T16:50:55.992Z">
+<meta property="og:updated_time" content="2018-01-07T06:25:50.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="X-notifier ZJU邮箱脚本">
 <meta name="twitter:description" content="一年前写的X-notifier 的浙大邮箱脚本，最近又修改了下，长时间开启浏览器也不会出现sid timeout了。 X-notifierX-notifier 是一个邮箱提醒浏览器插件，支持多邮箱（官网script），也可以自己编写script支持更多邮箱。 ZJUMail.js/**********************************************************Z">
@@ -33,11 +33,9 @@
 <div id="site">
   
   <div id="header">
-    <h1>
+    <div class="site-name">
       <a href="/">Bias</a>
-      <!-- <span class="byline"> <a href="/">NaturalL</a></span> -->
-      <img src="/img/logo.png" width="60" height="45"/>
-    </h1>
+    </div>
 
     <ul class="nav">
       
@@ -54,20 +52,17 @@
 <article id="post" class="post">
   
   <h1 class="title">X-notifier ZJU邮箱脚本</h1>
-  <span class="date"><i class="fa fa-calendar"></i> 2014-10-23</span>
+  <div class="post-meta">
+    <span class="date"><i class="fa fa-calendar"></i> 2014-10-23</span>
+    <span class="author"><i class="fa fa-user"></i> NaturalL</span>
+  </div>
+
   
-
-
   <p>一年前写的X-notifier 的浙大邮箱脚本，最近又修改了下，长时间开启浏览器也不会出现sid timeout了。</p>
 <h2 id="X-notifier"><a href="#X-notifier" class="headerlink" title="X-notifier"></a>X-notifier</h2><p>X-notifier 是一个邮箱提醒浏览器插件，支持多邮箱（官网script），也可以自己编写script支持更多邮箱。</p>
 <h2 id="ZJUMail-js"><a href="#ZJUMail-js" class="headerlink" title="ZJUMail.js"></a>ZJUMail.js</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**********************************************************</span></span><br><span class="line"><span class="comment">ZJUMail</span></span><br><span class="line"><span class="comment">**********************************************************/</span></span><br><span class="line"><span class="keyword">var</span> name=<span class="string">"ZJUMail"</span>;</span><br><span class="line"><span class="keyword">var</span> ver=<span class="string">"2013-011-18"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.loginData=[<span class="string">"http://mail.zju.edu.cn/coremail/index.jsp"</span>,<span class="string">"uid"</span>,<span class="string">"password"</span>,<span class="string">"action%3Alogin="</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">this</span>.dataURL=<span class="string">"http://mail.zju.edu.cn/coremail/XJS/index.jsp?"</span>;</span><br><span class="line">  <span class="keyword">this</span>.viewURL=<span class="string">"http://mail.zju.edu.cn/coremail/XJS/index.jsp?"</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIconURL</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"http://mail.zju.edu.cn/favicon.ico"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCount</span>(<span class="params">aData</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fnd=aData.match(<span class="regexp">/navNewCount_1\"&gt;\((\d+)\)&lt;\/span&gt;/</span>);</span><br><span class="line">  <span class="keyword">var</span> checked=aData.indexOf(<span class="string">'fNewMail'</span>);</span><br><span class="line">  <span class="keyword">if</span>(checked == <span class="number">-1</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fnd?fnd[<span class="number">1</span>]:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">process</span>(<span class="params">aData,aHttp</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">switch</span>(<span class="keyword">this</span>.stage)&#123;</span><br><span class="line">    <span class="keyword">case</span> ST_LOGIN_RES:&#123;</span><br><span class="line">      <span class="keyword">var</span> fnd=aData.match(<span class="regexp">/sid=\w+/</span>);</span><br><span class="line">      <span class="keyword">if</span>(fnd)&#123;</span><br><span class="line">        <span class="keyword">this</span>.viewURL=<span class="string">"http://mail.zju.edu.cn/coremail/XJS/index.jsp?"</span>+fnd;</span><br><span class="line">        <span class="keyword">this</span>.dataURL=<span class="keyword">this</span>.viewURL;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.baseProcess(aData,aHttp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##参考：<br><a href="http://xnotifier.tobwithu.com/dp" target="_blank" rel="noopener">http://xnotifier.tobwithu.com/dp</a></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http://xnotifier.tobwithu.com/dp" target="_blank" rel="noopener">http://xnotifier.tobwithu.com/dp</a></p>
 
-
-  <address class="signature">
-    <a class="author" href="/">NaturalL</a> 
-    <span class="date">2014-10-23</span>
-  </address>
 
   
   <div class="prev-next">
@@ -115,7 +110,7 @@
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
   </div> -->
 
-  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
 
   <script src="/js/script.js"></script>

@@ -41,7 +41,8 @@ abbr {
 }
 /* @end */
 body {
-  font-family: georgia,宋体,serif;
+  /*font-family: georgia,宋体,serif;*/
+  font-family: georgia, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   background-color: whitesmoke;
   background-position: center -18em;
   background-repeat: repeat-x;
@@ -79,28 +80,6 @@ a .pdf :before {
   margin-right: 1em;
   content: url(/files/css/icon_pdf.gif);
 }
-h1,
-h2,
-h3 {
-  line-height: 1.25em;
-  font-weight: bold;
-  clear: left;
-  font-family: inherit;
-}
-h1 {
-  font-size: 1.5em;
-  margin: 0 0 1em 0;
-  font-weight: normal;
-}
-h2 {
-  font-size: 1em;
-  margin: 0.9em 0 0.3em 0;
-}
-h3 {
-  font-size: 1em;
-  margin: 0.6em 0 0.2em 0;
-  text-indent: 1em;
-}
 hr {
   border-top: 1px solid silver;
   border-bottom: none;
@@ -125,16 +104,10 @@ sup {
 #page {
   position: relative;
 }
-/* More experimental CSS3 features */
-#page,
-#disqus_thread {
-  box-shadow: 2px 2px 8px #aaa;
-  -webkit-box-shadow: 2px 2px 8px #aaa;
-  -moz-box-shadow: 2px 2px 8px #aaa;
-}
-#disqus_thread {
-  padding-top: 2em;
-}
+/* More experimental C
+
+#disqus_thread { padding-top: 2em; }
+
 /* TODO
 #page { counter-reset: section; }
 #page h2:before {
@@ -184,11 +157,12 @@ p.emphfirst:first-line {
   line-height: 1.714em;
 }
 blockquote {
-  padding: 0 2.8em;
-  margin: 1.714em 0;
-  color: #444;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  color: #2a2e2e;
   font-size: 0.875em;
   line-height: 1.714em;
+  border-left: 2px solid;
 }
 .note {
   padding-top: 0.5em;
@@ -292,29 +266,27 @@ ul.compact li a {
   color: silver;
 }
 #header {
-  position: relative;
   font-variant: small-caps;
-  line-height: 1em;
+  line-height: 1;
+  height: 2.5em;
   margin-top: .5em;
   margin-bottom: 20px;
+  width: 100%;
+  display: table;
 }
-#header h1 {
+#header .site-name {
   font-family: Palatino, georgia, "times new roman", serif;
-  margin-bottom: 20px;
-  line-height: 0.9em;
-  display: block;
   font-weight: normal;
+  display: table-cell;
+  vertical-align: bottom;
+  font-size: 1.8em;
 }
 #header ul {
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 18px;
-  line-height: 0.9em;
-  display: block;
-  margin-bottom: 0px;
-  width: 70%;
+  display: table-cell;
   text-align: right;
+  vertical-align: bottom;
+  line-height: 1;
 }
 #header ul li {
   display: inline;
@@ -688,13 +660,15 @@ div.maruku-equation img.maruku-png {
   cursor: pointer;
 }
 /*----------------custom----------------------------*/
-#post {
-  font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
-}
 /* @group Code */
+pre,
+code {
+  /*font-family: "DejaVu Sans Mono",Consolas,"Liberation Mono",Menlo,Courier,monospace;*/
+  font-family: "SFMono-Regular", "DejaVu Sans Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 14px;
+  line-height: 1.3em;
+}
 #post > pre {
-  font-size: 1em;
-  Hacktomakecodelooksamesizeasbodyfontline-height: 1.3em;
   overflow: auto;
   display: block;
   padding: 8.5px;
@@ -714,11 +688,6 @@ div.maruku-equation img.maruku-png {
 }
 .highlight {
   margin: 0;
-}
-.highlight pre,
-.highlight code {
-  font-family: "DejaVu Sans Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 14px;
 }
 /* @end */
 #page li {
@@ -759,12 +728,13 @@ p > img {
 .posts {
   margin-top: 40px;
 }
-.posts .title {
-  font-size: 1.4em;
-  margin: 0px;
-  color: #333;
-  font-weight: 700;
-  text-align: center;
+.posts h2 {
+  line-height: 1.25em;
+  font-weight: bold;
+  clear: left;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0.9em 0 0.3em 0;
 }
 @media screen and (max-width: 900px) {
   #site {
@@ -790,9 +760,9 @@ p > img {
   #header {
     margin: 0 auto;
   }
-  #header h1 {
+  #header .site-name {
     text-align: center;
-    margin: 10px 0 0 0;
+    width: 100%;
   }
   #header .byline {
     display: none;
@@ -845,15 +815,65 @@ p > img {
   margin-bottom: 8px;
 }
 .prev-next a {
+  margin-top: 30px;
   background: #eee;
   border-radius: 4px;
   padding: 0 5px;
 }
-#page > article .date {
-  display: inline-block;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding-left: 4px;
+#post {
+  font-family: georgia, "Source Sans Pro", "Helvetica Neue", Arial, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+}
+#post > .title {
+  font-size: 1.4em;
+  margin: 0px;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+}
+#post .post-meta {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  color: #444;
+  font-size: 0.9em;
+}
+#post .post-meta span {
+  margin-right: 10px;
+}
+#post h2,
+#post h3,
+#post h4,
+#post h5,
+#post h6 {
+  font-size: 1em;
+  line-height: 1.25;
+  margin: 0.9em 0 0.3em 0.7em;
+  font-weight: bold;
+  clear: left;
+  color: #333;
+  position: relative;
+}
+#post h3 {
+  text-indent: 1em;
+}
+#post h2:before,
+#post h3:before,
+#post h4:before,
+#post h5:before,
+#post h6:before {
+  content: "#";
+  color: #42b983;
+  position: absolute;
+  left: -0.7em;
+  top: -2px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#post h3:before,
+#post h4:before,
+#post h5:before,
+#post h6:before {
+  content: "*";
 }
 #analysis {
   display: none;
