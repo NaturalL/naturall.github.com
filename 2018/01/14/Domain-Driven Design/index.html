@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  
+  <title>Jave Web 合理开发模式 | BiaSee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="领域驱动设计 DDD">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jave Web 合理开发模式">
+<meta property="og:url" content="http://yoursite.com/2018/01/14/Domain-Driven Design/index.html">
+<meta property="og:site_name" content="BiaSee">
+<meta property="og:description" content="领域驱动设计 DDD">
+<meta property="og:updated_time" content="2018-01-14T09:46:09.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jave Web 合理开发模式">
+<meta name="twitter:description" content="领域驱动设计 DDD">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+
+<body>
+<div id="site">
+  
+  <div id="header">
+    <div class="site-name">
+      <a href="/">BiaSee</a>
+    </div>
+
+    <ul class="nav">
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </div>
+
+
+  <div id="page">
+    
+<article id="post" class="post">
+  
+  <h1 class="title">Jave Web 合理开发模式</h1>
+  <div class="post-meta">
+    <span class="date"><i class="fa fa-calendar"></i> 2018-01-14</span>
+    <span class="author"><i class="fa fa-user"></i> BiaSee</span>
+  </div>
+
+  
+  <blockquote>
+<p>后面的相关资源文章不错</p>
+</blockquote>
+<p>自从四五年前，大四，接触Java Web，一上来就是SSH框架，架子很大，烦琐，只得形式。后来断断续续参与一些项目，功能可以实现，但总觉得实现的方式不够合理，比如过于繁琐，有大量重复代码、样板式代码，导致重复劳动，容易出错，不可复用等。</p>
+<p>我很好奇，正确的模式应该是怎样的，不同的场景，有什么指导思想吗？经过一番搜索学习，有了一些了解，但还有很多不清楚的地方。（待续修改完善）</p>
+<h2 id="常见模式"><a href="#常见模式" class="headerlink" title="常见模式"></a>常见模式</h2><h3 id="一：controller-action-service-dao"><a href="#一：controller-action-service-dao" class="headerlink" title="一：controller/action-service-dao"></a>一：controller/action-service-dao</h3><p>我做的Java Web项目还真不多，见到的基本是这个分层，但是同样的分层，还是有不同的用法。一种就是大量业务逻辑都写在了controller里，service很薄，只是DAO的传话筒。这种方式，业务逻辑的复用是个问题，应该把业务逻辑写在service里。然后常见就是一个数据库table对应一个service，对于小项目，每个表自成一体，还算合理，但不应该固守这个模式。还有坚持controller通过service调用DAO来持久化，这应该是合理的。对于简单表的CRUD，这似乎过于繁琐，个人认为这时可以直接调用DAO，同时复杂操作（多个DAO,事务等）通过service。<a href="http://www.expojo.com/exposedDomainModel.htm" target="_blank" rel="noopener">exposed domain model pattern</a>使用类似方式，但是DAO变成了Repository。</p>
+<h2 id="事务脚本模式"><a href="#事务脚本模式" class="headerlink" title="事务脚本模式"></a>事务脚本模式</h2><h2 id="领域模型模式"><a href="#领域模型模式" class="headerlink" title="领域模型模式"></a>领域模型模式</h2><h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><p><a href="https://www.infoq.com/articles/ddd-in-practice" target="_blank" rel="noopener">Domain Driven Design and Development In Practice</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></p>
+
+
+  
+  <div class="prev-next">
+  
+
+  
+    <a href="/2017/05/01/css-transition-force-reflow/" class="prev" title="CSS transition force reflow"><i class="fa fa-hand-o-left"></i> CSS transition force reflow</a>
+  
+  </div>
+
+  
+</article>
+
+
+</div>
+
+
+<div id="disqus_thread"> <div style="text-align:center;">加载评论框需要翻墙</div></div>
+<script>
+  var disqus_shortname = 'flyjoy';
+  
+  var disqus_url = 'http://yoursite.com/2018/01/14/Domain-Driven Design/';
+  
+
+  isAgent(getDisqus)
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  };
+</script>
+
+
+  
+  <div id="toTop">
+    <img src="/img/toTop.png" width="59" height="76"/>
+  </div>
+  
+</div>
+
+<!--   {% include JB/analytics %}
+  <div id="analysis">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256634151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256634151' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div> -->
+
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
